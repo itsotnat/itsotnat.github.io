@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Hartanto</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0e0e0f;
+    --bg2: #141416;
+    --bg3: #1a1a1d;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #e8e8e6;
+    --text2: #888884;
+    --text3: #555552;
+    --accent: #4a9eff;
+    --accent2: #1a6abf;
+    --green: #3ecf8e;
+    --amber: #f5a623;
+    --red: #ff6b6b;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: rgba(74,158,255,0.2); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 56px;
+    background: rgba(14,14,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--accent); letter-spacing: 0.05em; }
+  .nav-links { display: flex; gap: 1.5rem; }
+  .nav-links a { font-size: 13px; color: var(--text2); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+
+  /* LAYOUT */
+  main { max-width: 760px; margin: 0 auto; padding: 120px 2rem 80px; }
+
+  /* HERO */
+  .hero { margin-bottom: 80px; }
+  .hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1rem; }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 300; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+  .hero h1 span { color: var(--text2); }
+  .hero-desc { font-size: 16px; color: var(--text2); max-width: 540px; line-height: 1.75; margin-bottom: 1.75rem; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2rem; }
+  .tag { font-family: 'DM Mono', monospace; font-size: 11px; padding: 4px 10px; border: 1px solid var(--border2); border-radius: 4px; color: var(--text2); letter-spacing: 0.03em; transition: border-color 0.2s, color 0.2s; }
+  .tag:hover { border-color: var(--accent2); color: var(--accent); }
+  .hero-links { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { font-family: 'DM Mono', monospace; font-size: 12px; padding: 8px 16px; border-radius: 4px; text-decoration: none; transition: all 0.2s; letter-spacing: 0.03em; }
+  .btn-primary { background: var(--accent); color: #0e0e0f; }
+  .btn-primary:hover { background: #6db3ff; }
+  .btn-ghost { border: 1px solid var(--border2); color: var(--text2); }
+  .btn-ghost:hover { border-color: var(--accent2); color: var(--text); }
+
+  /* SECTION */
+  section { margin-bottom: 72px; }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* SKILLS */
+  .skill-group { margin-bottom: 16px; display: grid; grid-template-columns: 140px 1fr; gap: 12px; align-items: start; }
+  .skill-key { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); letter-spacing: 0.05em; padding-top: 2px; }
+  .skill-val { font-size: 14px; color: var(--text2); line-height: 1.6; }
+  .skill-val .hl { color: var(--text); }
+
+  /* PROJECT CARDS */
+  .project-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 12px;
+    background: var(--bg2);
+    transition: border-color 0.2s, background 0.2s;
+    cursor: pointer;
+  }
+  .project-card:hover { border-color: var(--border2); background: var(--bg3); }
+  .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+  .card-title { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+  .card-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); }
+  .status { font-family: 'DM Mono', monospace; font-size: 10px; padding: 3px 8px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; }
+  .status-live { background: rgba(62,207,142,0.1); color: var(--green); border: 1px solid rgba(62,207,142,0.2); }
+  .status-done { background: rgba(74,158,255,0.1); color: var(--accent); border: 1px solid rgba(74,158,255,0.2); }
+  .status-test { background: rgba(245,166,35,0.1); color: var(--amber); border: 1px solid rgba(245,166,35,0.2); }
+
+  .card-body { display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+  .card-body.open { display: block; }
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .info-box { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px; }
+  .info-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text3); letter-spacing: 0.08em; margin-bottom: 6px; }
+  .info-text { font-size: 13px; color: var(--text2); line-height: 1.6; }
+  .result-row { background: rgba(62,207,142,0.06); border: 1px solid rgba(62,207,142,0.15); border-radius: 6px; padding: 10px 12px; margin-bottom: 12px; }
+  .result-row .info-label { color: var(--green); }
+  .result-row .info-text { color: #b8f0d8; }
+  .tech-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tech { font-family: 'DM Mono', monospace; font-size: 10px; padding: 3px 8px; background: var(--bg); border: 1px solid var(--border); border-radius: 3px; color: var(--text3); }
+
+  .card-toggle { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); display: flex; align-items: center; gap: 6px; margin-top: 10px; }
+  .card-toggle span { transition: transform 0.2s; display: inline-block; }
+  .card-toggle.open span { transform: rotate(180deg); }
+
+  /* CERTS */
+  .cert-item { display: flex; align-items: center; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .cert-item:last-child { border-bottom: none; }
+  .cert-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .cert-name { font-size: 14px; color: var(--text); flex: 1; }
+  .cert-issuer { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); }
+
+  /* CONTACT */
+  .contact-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 1rem; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); max-width: 760px; margin: 0 auto; }
+
+  /* FADE IN */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .hero { animation: fadeUp 0.6s ease both; }
+  section { animation: fadeUp 0.6s ease both; }
+  section:nth-child(2) { animation-delay: 0.1s; }
+  section:nth-child(3) { animation-delay: 0.2s; }
+  section:nth-child(4) { animation-delay: 0.3s; }
+
+  @media (max-width: 600px) {
+    .info-grid { grid-template-columns: 1fr; }
+    .skill-group { grid-template-columns: 1fr; gap: 4px; }
+    nav { padding: 0 1rem; }
+    main { padding: 100px 1.25rem 60px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">hartanto.dev</span>
+  <div class="nav-links">
+    <a href="#keahlian">Keahlian</a>
+    <a href="#proyek">Proyek</a>
+    <a href="#sertifikasi">Sertifikasi</a>
+    <a href="#kontak">Kontak</a>
+  </div>
+</nav>
+
+<main>
+
+  <div class="hero">
+    <p class="hero-eyebrow">// IT Staff & Healthcare System Integrator</p>
+    <h1>Hartanto<br><span>Surabaya, Indonesia</span></h1>
+    <p class="hero-desc">IT Professional dengan 3+ tahun pengalaman di bidang integrasi sistem dan pengembangan solusi IT di lingkungan healthcare. Berpengalaman dalam implementasi sistem LIS lintas kota dan pulau, pengembangan aplikasi berbasis Node.js, Python, dan React.js.</p>
+    <div class="hero-tags">
+      <span class="tag">Node.js</span>
+      <span class="tag">Python</span>
+      <span class="tag">React.js</span>
+      <span class="tag">LIS Integration</span>
+      <span class="tag">HL7 / ASTM</span>
+      <span class="tag">Healthcare IT</span>
+      <span class="tag">SIMRS / SIMKLINIK</span>
+    </div>
+    <div class="hero-links">
+      <a href="mailto:hartanto.support@gmail.com" class="btn btn-primary">Hubungi Saya</a>
+      <a href="https://www.linkedin.com/in/hartanto75/" target="_blank" class="btn btn-ghost">LinkedIn</a>
+      <a href="https://github.com/itsotnat" target="_blank" class="btn btn-ghost">GitHub</a>
+    </div>
+  </div>
+
+  <section id="keahlian">
+    <p class="section-label">Keahlian</p>
+    <div class="skill-group">
+      <span class="skill-key">programming</span>
+      <span class="skill-val"><span class="hl">Node.js, JavaScript, Java, Python</span>, Google Apps Script, Data Parsing & Automation</span>
+    </div>
+    <div class="skill-group">
+      <span class="skill-key">sistem & jaringan</span>
+      <span class="skill-val"><span class="hl">LIS Integration, HL7, ASTM, Serial Communication</span>, Network Management (LAN/WAN), Windows Server, Linux, TCP/IP, Healthcare IT</span>
+    </div>
+    <div class="skill-group">
+      <span class="skill-key">tools & infra</span>
+      <span class="skill-val"><span class="hl">React.js, Supabase, MySQL</span>, Vite, Git, SIMRS, SIMKLINIK, Hardware Troubleshooting</span>
+    </div>
+  </section>
+
+  <section id="proyek">
+    <p class="section-label">Proyek</p>
+
+    <div class="project-card" onclick="toggle(this)">
+      <div class="card-top">
+        <div>
+          <p class="card-title">🏆 Retail Crisis & Recovery Visualization</p>
+          <p class="card-meta">DQLabs Hackathon · Python</p>
+        </div>
+        <span class="status status-done">Selesai</span>
+      </div>
+      <div class="card-toggle"><span>▾</span> lihat detail</div>
+      <div class="card-body">
+        <div class="info-grid">
+          <div class="info-box">
+            <p class="info-label">⚠ KENDALA</p>
+            <p class="info-text">Data time-series tidak konsisten dan memiliki banyak missing value yang memengaruhi akurasi analisis.</p>
+          </div>
+          <div class="info-box">
+            <p class="info-label">🔧 SOLUSI</p>
+            <p class="info-text">Data cleansing dan interpolasi, lalu membangun pipeline visualisasi end-to-end untuk mendeteksi pola krisis dan pemulihan.</p>
+          </div>
+        </div>
+        <div class="result-row">
+          <p class="info-label">✓ HASIL</p>
+          <p class="info-text">Peringkat #32 dari 464 peserta — Top 100 Finalis.</p>
+        </div>
+        <div class="tech-row">
+          <span class="tech">Python</span><span class="tech">Pandas</span><span class="tech">Matplotlib</span><span class="tech">Data Visualization</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="toggle(this)">
+      <div class="card-top">
+        <div>
+          <p class="card-title">📦 StockLive — Monitoring Stok Real-time</p>
+          <p class="card-meta">Google Apps Script + Sheets</p>
+        </div>
+        <span class="status status-done">Selesai</span>
+      </div>
+      <div class="card-toggle"><span>▾</span> lihat detail</div>
+      <div class="card-body">
+        <div class="info-grid">
+          <div class="info-box">
+            <p class="info-label">⚠ KENDALA</p>
+            <p class="info-text">Data stok tersebar di beberapa file spreadsheet yang tidak terkoneksi, menyulitkan pemantauan secara keseluruhan.</p>
+          </div>
+          <div class="info-box">
+            <p class="info-label">🔧 SOLUSI</p>
+            <p class="info-text">Sistem otomatis menggunakan Google Apps Script yang menarik dan merangkum data dari semua spreadsheet dalam satu dashboard terpusat.</p>
+          </div>
+        </div>
+        <div class="result-row">
+          <p class="info-label">✓ HASIL</p>
+          <p class="info-text">Pemantauan stok menjadi real-time tanpa perlu membuka file satu per satu.</p>
+        </div>
+        <div class="tech-row">
+          <span class="tech">Google Apps Script</span><span class="tech">Google Sheets</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="toggle(this)">
+      <div class="card-top">
+        <div>
+          <p class="card-title">🏥 Hospital Maintenance Dashboard</p>
+          <p class="card-meta">PT Wahana Meditek Indonesia · React.js + Supabase</p>
+        </div>
+        <span class="status status-live">Aktif</span>
+      </div>
+      <div class="card-toggle"><span>▾</span> lihat detail</div>
+      <div class="card-body">
+        <div class="info-grid">
+          <div class="info-box">
+            <p class="info-label">⚠ KENDALA</p>
+            <p class="info-text">Tidak ada sistem terpusat untuk memantau status perangkat dan jadwal maintenance di berbagai RS klien.</p>
+          </div>
+          <div class="info-box">
+            <p class="info-label">🔧 SOLUSI</p>
+            <p class="info-text">Dashboard berbasis React.js + Supabase dengan fitur CRUD, autentikasi user, dan pembaruan data real-time.</p>
+          </div>
+        </div>
+        <div class="result-row">
+          <p class="info-label">✓ HASIL</p>
+          <p class="info-text">Dashboard aktif digunakan untuk pengelolaan perangkat dan server di lingkungan rumah sakit.</p>
+        </div>
+        <div class="tech-row">
+          <span class="tech">React.js</span><span class="tech">Vite</span><span class="tech">Supabase</span><span class="tech">PostgreSQL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="toggle(this)">
+      <div class="card-top">
+        <div>
+          <p class="card-title">🤖 ParseGuard — WhatsApp Bot Notifikasi Error</p>
+          <p class="card-meta">PT Wahana Meditek Indonesia · Node.js</p>
+        </div>
+        <span class="status status-live">Aktif</span>
+      </div>
+      <div class="card-toggle"><span>▾</span> lihat detail</div>
+      <div class="card-body">
+        <div class="info-grid">
+          <div class="info-box">
+            <p class="info-label">⚠ KENDALA</p>
+            <p class="info-text">Tim IT sering terlambat mengetahui ketika parsing alat laboratorium mati — baru diketahui saat user komplain.</p>
+          </div>
+          <div class="info-box">
+            <p class="info-label">🔧 SOLUSI</p>
+            <p class="info-text">Bot WhatsApp berbasis Node.js yang memantau status parsing secara real-time dan mengirim notifikasi otomatis ke grup tim IT.</p>
+          </div>
+        </div>
+        <div class="result-row">
+          <p class="info-label">✓ HASIL</p>
+          <p class="info-text">Respons insiden lebih cepat — error terdeteksi sebelum user komplain.</p>
+        </div>
+        <div class="tech-row">
+          <span class="tech">Node.js</span><span class="tech">JavaScript</span><span class="tech">WhatsApp API</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="toggle(this)">
+      <div class="card-top">
+        <div>
+          <p class="card-title">🖥️ HostGuard — Monitoring Jaringan dengan Alert</p>
+          <p class="card-meta">PT Multi Bina Sehat Sejahtera · Python</p>
+        </div>
+        <span class="status status-test">Testing</span>
+      </div>
+      <div class="card-toggle"><span>▾</span> lihat detail</div>
+      <div class="card-body">
+        <div class="info-grid">
+          <div class="info-box">
+            <p class="info-label">⚠ KENDALA</p>
+            <p class="info-text">Tidak ada cara cepat mengetahui komputer di 5 lokasi klinik mati — baru diketahui saat staf melaporkan langsung.</p>
+          </div>
+          <div class="info-box">
+            <p class="info-label">🔧 SOLUSI</p>
+            <p class="info-text">Sistem monitoring berbasis ping dengan email alert otomatis menggunakan Python, diuji di lingkungan multi-lokasi.</p>
+          </div>
+        </div>
+        <div class="result-row">
+          <p class="info-label">✓ HASIL</p>
+          <p class="info-text">Berhasil diuji di lingkungan multi-lokasi. Pengembangan lanjutan tidak dilanjutkan karena pergantian tempat kerja.</p>
+        </div>
+        <div class="tech-row">
+          <span class="tech">Python</span><span class="tech">SMTP</span><span class="tech">Network Monitoring</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="toggle(this)">
+      <div class="card-top">
+        <div>
+          <p class="card-title">💰 FingerPay — Sistem Penggajian Berbasis Fingerprint</p>
+          <p class="card-meta">Freelance · Java + MySQL</p>
+        </div>
+        <span class="status status-done">Selesai</span>
+      </div>
+      <div class="card-toggle"><span>▾</span> lihat detail</div>
+      <div class="card-body">
+        <div class="info-grid">
+          <div class="info-box">
+            <p class="info-label">⚠ KENDALA</p>
+            <p class="info-text">Perhitungan gaji dan lembur dari data fingerprint dilakukan manual, rawan human error dan memakan waktu lama.</p>
+          </div>
+          <div class="info-box">
+            <p class="info-label">🔧 SOLUSI</p>
+            <p class="info-text">Aplikasi Java yang membaca data fingerprint dan menghitung otomatis gaji pokok, lembur, dan potongan secara akurat.</p>
+          </div>
+        </div>
+        <div class="result-row">
+          <p class="info-label">✓ HASIL</p>
+          <p class="info-text">Proses perhitungan gaji menjadi otomatis dan akurat, mengurangi waktu pengerjaan secara signifikan.</p>
+        </div>
+        <div class="tech-row">
+          <span class="tech">Java</span><span class="tech">MySQL</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="sertifikasi">
+    <p class="section-label">Sertifikasi</p>
+    <div class="cert-item">
+      <div class="cert-dot" style="background: var(--amber);"></div>
+      <div style="flex:1">
+        <p class="cert-name">Hackathon: Retail Crisis & Recovery Visualization using Python</p>
+        <p class="cert-issuer">DQLab · Mei 2026 · Peringkat #32 dari 464 peserta</p>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-dot" style="background: var(--accent);"></div>
+      <div style="flex:1">
+        <p class="cert-name">AI Agent for Data Analysis</p>
+        <p class="cert-issuer">Hacktiv8 × IBM SkillsBuild · 2026</p>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-dot" style="background: var(--accent);"></div>
+      <div style="flex:1">
+        <p class="cert-name">Introduction to Data Science with Python</p>
+        <p class="cert-issuer">DQLab · Feb 2024</p>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-dot" style="background: var(--green);"></div>
+      <div style="flex:1">
+        <p class="cert-name">BNSP — Data Management Staff</p>
+        <p class="cert-issuer">Badan Nasional Sertifikasi Profesi · 2021</p>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-dot" style="background: var(--green);"></div>
+      <div style="flex:1">
+        <p class="cert-name">BNSP — Teknik Komputer dan Jaringan</p>
+        <p class="cert-issuer">Badan Nasional Sertifikasi Profesi · 2018</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontak">
+    <p class="section-label">Kontak</p>
+    <p style="color: var(--text2); margin-bottom: 1rem;">Terbuka untuk peluang kerja di bidang Healthcare IT, IT Staff, atau System Integration.</p>
+    <div class="contact-row">
+      <a href="mailto:hartanto.support@gmail.com" class="btn btn-primary">hartanto.support@gmail.com</a>
+      <a href="https://www.linkedin.com/in/hartanto75/" target="_blank" class="btn btn-ghost">LinkedIn</a>
+      <a href="https://github.com/itsotnat" target="_blank" class="btn btn-ghost">GitHub</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Portfolio — Hartanto · IT Staff & Healthcare System Integrator · Surabaya, Indonesia</p>
+</footer>
+
+<script>
+  function toggle(card) {
+    const body = card.querySelector('.card-body');
+    const tog = card.querySelector('.card-toggle');
+    body.classList.toggle('open');
+    tog.classList.toggle('open');
+    tog.querySelector('span').textContent = body.classList.contains('open') ? '▴' : '▾';
+  }
+</script>
+
+</body>
+</html>
