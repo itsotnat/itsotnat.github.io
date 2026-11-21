@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hartanto · Aplikasi Web untuk UMKM</title>
 <meta name="description" content="Hartanto, developer di Surabaya. Membuat aplikasi web sederhana untuk UMKM: nota dan invoice, ongkir kurir, stok gudang, dan otomasi WhatsApp.">
+<meta property="og:title" content="Hartanto · Aplikasi Web untuk UMKM">
+<meta property="og:description" content="Dari catatan di Excel dan chat, jadi aplikasi yang beres. Nota, ongkir kurir, stok gudang, dan otomasi WhatsApp.">
+<meta property="og:image" content="https://itsotnat.github.io/jasa/img/og.jpg">
 <meta name="theme-color" content="#F6F2EA">
+<link rel="icon" href="img/avatar-santai.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -30,6 +34,7 @@
   .nav.scrolled{border-color:var(--line)}
   .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
   .brand{display:flex;align-items:center;gap:10px;font-weight:800;text-decoration:none;font-size:17px}
+  .brand img{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid var(--paper);box-shadow:0 0 0 1px var(--line)}
   .brand .mark{width:32px;height:32px;border-radius:10px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:15px}
   .nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-weight:600;font-size:14.5px;color:var(--ink-2)}
   .nav ul a{text-decoration:none}
@@ -41,6 +46,9 @@
   .btn-dark{background:var(--ink);color:var(--paper)}
   .btn-green{background:var(--green);border-color:var(--green);color:#fff}
   .btn-ghost{background:transparent}
+  .btn-demo{background:var(--green);border-color:var(--green);color:#fff;box-shadow:0 8px 18px -10px rgba(14,106,78,.8)}
+  .btn-demo:hover{background:#0B5A42}
+  .btn-demo svg{width:14px;height:14px}
   .btn-sm{padding:8px 14px;font-size:13.5px}
   .btn svg{width:18px;height:18px;flex:none}
 
@@ -144,6 +152,9 @@
   /* about */
   .about{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:start}
   @media (max-width:860px){.about{grid-template-columns:1fr}}
+  .me{display:grid;grid-template-columns:170px 1fr;gap:24px;align-items:start}
+  .me img{width:170px;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:20px;box-shadow:0 20px 40px -22px rgba(26,29,27,.5);background:#eee}
+  @media (max-width:560px){.me{grid-template-columns:1fr}.me img{width:150px}}
   .about .txt p{color:var(--ink-2);font-size:16.5px;margin-bottom:14px}
   .about .txt p b{color:var(--ink)}
   .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:24px}
@@ -195,7 +206,7 @@
 
 <nav class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="#top"><span class="mark">H</span>Hartanto</a>
+    <a class="brand" href="#top"><img src="img/avatar-santai.webp" alt="" width="34" height="34">Hartanto</a>
     <ul>
       <li><a href="#project">Project</a></li>
       <li><a href="#layanan">Layanan</a></li>
@@ -223,8 +234,8 @@
     </div>
     <div class="stats">
       <div><b>3+ th</b><span>pengalaman di bidang IT</span></div>
-      <div><b>11</b><span>project yang sudah dibangun</span></div>
-      <div><b>BNSP</b><span>2 sertifikasi kompetensi</span></div>
+      <div><b>11</b><span>project sudah dibangun</span></div>
+      <div><b>16</b><span>usaha memakai aplikasi saya</span></div>
     </div>
   </div>
 </header>
@@ -248,7 +259,7 @@
             <div class="icon" style="background:var(--green-2);color:var(--green)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>
             </div>
-            <span class="badge b-live">Dipakai klien</span>
+            <span class="badge b-live">Dipakai 3 klien</span>
             <span class="cat">Laundry · Langganan bulanan</span>
           </div>
           <h3>NotaCuci</h3>
@@ -264,13 +275,40 @@
             <li>Kirim nota ke pelanggan lewat WhatsApp</li>
           </ul>
           <div class="chips"><span class="chip">Web app</span><span class="chip">PDF</span><span class="chip">Excel</span><span class="chip">WhatsApp</span><span class="chip">VPS</span></div>
-          <div class="links"><a class="btn btn-dark btn-sm" data-link="notacuci" target="_blank" rel="noopener">Lihat aplikasi</a></div>
+          <div class="links"><a class="btn btn-demo btn-sm" data-link="notacuci" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>Coba demo</a></div>
         </div>
         <div class="gallery" style="--glow:#D5ECE4">
           <div class="duo">
             <div class="desk"><img src="img/notacuci-desktop.webp" alt="Tampilan NotaCuci di laptop" loading="lazy" width="1200" height="750"></div>
             <div class="phone"><img src="img/notacuci-hp.webp" alt="Tampilan NotaCuci di HP" loading="lazy" width="420" height="840"></div>
           </div>
+        </div>
+      </article>
+
+      <!-- UMKM Titip -->
+      <article class="proj noimg reveal">
+        <div class="body">
+          <div class="proj-top">
+            <div class="icon" style="background:var(--amber-2);color:var(--amber)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9h18M9 20v-6h6v6"/></svg>
+            </div>
+            <span class="badge b-live">Dipakai 10 mitra UMKM</span>
+            <span class="cat">Makanan titip jual · Android</span>
+          </div>
+          <h3>UMKM Titip</h3>
+          <p class="tag">Pencatatan titip jual ke warung, kantin, dan toko. Sudah rilis dan dipakai 10 mitra UMKM.</p>
+          <div class="ps">
+            <div class="p"><small>Masalah</small>Produsen makanan harian menitip ke banyak outlet. Barang kirim dan retur tercecer di chat, rugi dari barang tak laku tidak kelihatan.</div>
+            <div class="s"><small>Solusi</small>Catat kirim dan retur per outlet tiap hari. Omzet dan untung rugi dihitung otomatis.</div>
+          </div>
+          <ul class="feat">
+            <li>Master produk dengan HPP dan harga jual yang terisi otomatis</li>
+            <li>Laporan per outlet: laris, standar, kurang, plus ekspor Excel</li>
+            <li>Pesanan langsung dengan status bayar dan jatuh tempo</li>
+            <li>Tetap jalan tanpa sinyal, sinkron saat online lagi</li>
+          </ul>
+          <div class="chips"><span class="chip">Android</span><span class="chip">Offline-first</span><span class="chip">REST API</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span></div>
+          <div class="links"><a class="btn btn-dark btn-sm" data-link="umkmtitip" target="_blank" rel="noopener">Kunjungi situs</a></div>
         </div>
       </article>
 
@@ -297,40 +335,13 @@
             <li>Bisa dipasang di layar utama HP seperti aplikasi biasa</li>
           </ul>
           <div class="chips"><span class="chip">PWA</span><span class="chip">OpenStreetMap</span><span class="chip">OSRM</span><span class="chip">Google Sheets</span><span class="chip">Apps Script</span></div>
-          <div class="links"><a class="btn btn-dark btn-sm" data-link="jemputantar" target="_blank" rel="noopener">Coba demo</a></div>
+          <div class="links"><a class="btn btn-demo btn-sm" data-link="jemputantar" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>Coba demo</a></div>
         </div>
         <div class="gallery" style="--glow:#DCE6F6">
           <div class="pair">
             <div class="phone"><img src="img/jemputantar-order.webp" alt="Tampilan JemputAntar di HP" loading="lazy" width="420" height="840"></div>
             <div class="phone"><img src="img/jemputantar-riwayat.webp" alt="Tampilan JemputAntar di HP" loading="lazy" width="420" height="840"></div>
           </div>
-        </div>
-      </article>
-
-      <!-- UMKM Titip -->
-      <article class="proj noimg reveal">
-        <div class="body">
-          <div class="proj-top">
-            <div class="icon" style="background:var(--amber-2);color:var(--amber)">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9h18M9 20v-6h6v6"/></svg>
-            </div>
-            <span class="badge b-soon">Segera rilis</span>
-            <span class="cat">Makanan titip jual · Android</span>
-          </div>
-          <h3>UMKM Titip</h3>
-          <p class="tag">Pencatatan titip jual ke warung, kantin, dan toko. Titip tercatat, untung terlihat.</p>
-          <div class="ps">
-            <div class="p"><small>Masalah</small>Produsen makanan harian menitip ke banyak outlet. Barang kirim dan retur tercecer di chat, rugi dari barang tak laku tidak kelihatan.</div>
-            <div class="s"><small>Solusi</small>Catat kirim dan retur per outlet tiap hari. Omzet dan untung rugi dihitung otomatis.</div>
-          </div>
-          <ul class="feat">
-            <li>Master produk dengan HPP dan harga jual yang terisi otomatis</li>
-            <li>Laporan per outlet: laris, standar, kurang, plus ekspor Excel</li>
-            <li>Pesanan langsung dengan status bayar dan jatuh tempo</li>
-            <li>Tetap jalan tanpa sinyal, sinkron saat online lagi</li>
-          </ul>
-          <div class="chips"><span class="chip">Android</span><span class="chip">Offline-first</span><span class="chip">REST API</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span></div>
-          <div class="links"><a class="btn btn-dark btn-sm" data-link="umkmtitip" target="_blank" rel="noopener">Kunjungi situs</a></div>
         </div>
       </article>
 
@@ -341,7 +352,7 @@
             <div class="icon" style="background:var(--clay-2);color:var(--clay)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>
             </div>
-            <span class="badge b-proto">Prototype</span>
+            <span class="badge b-live">Dipakai 1 klien</span>
             <span class="cat">Gudang · Bisa offline</span>
           </div>
           <h3>GudangKu</h3>
@@ -356,7 +367,7 @@
             <li>Satu file, langsung jalan di komputer gudang</li>
           </ul>
           <div class="chips"><span class="chip">Web app</span><span class="chip">Offline</span><span class="chip">Single file</span></div>
-          <div class="links"><a class="btn btn-dark btn-sm" data-link="gudangku" target="_blank" rel="noopener">Coba demo</a></div>
+          <div class="links"><a class="btn btn-demo btn-sm" data-link="gudangku" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>Coba demo</a></div>
         </div>
         <div class="gallery" style="--glow:#F6E2D6">
           <div class="duo">
@@ -373,8 +384,8 @@
             <div class="icon" style="background:#FBE3F1;color:#B5307A">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21v-6h6v6"/></svg>
             </div>
-            <span class="badge b-demo">Landing page</span>
-            <span class="cat">Kos-kosan · Website</span>
+            <span class="badge b-live">Dipakai 1 klien</span>
+            <span class="cat">Kos-kosan · Landing page</span>
           </div>
           <h3>Kost Pink</h3>
           <p class="tag">Halaman promosi kos di Siwalankerto, Surabaya, yang langsung mengarahkan calon penghuni ke WhatsApp.</p>
@@ -409,7 +420,7 @@
         <div class="kicker">Project lain</div>
         <h2>Otomasi, IoT, dan data</h2>
       </div>
-      <p>Project pribadi dan riset yang melatih saya di bot WhatsApp, perangkat keras, dan pengolahan data.</p>
+      <p>Pesanan khusus, project pribadi, dan riset di bot WhatsApp, perangkat keras, dan pengolahan data.</p>
     </div>
     <div class="grid4">
       <div class="mini reveal">
@@ -424,10 +435,10 @@
       <div class="mini reveal">
         <div class="proj-top">
           <div class="icon" style="background:var(--blue-2);color:var(--blue)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></div>
-          <span class="badge b-proto">Perancangan</span>
+          <span class="badge b-live">Dipakai 1 klien</span>
         </div>
         <h3>Platform Monitoring Panel IoT</h3>
-        <p>Sistem pemantauan panel listrik berbasis ESP32 yang tetap mencatat data saat koneksi putus. Dokumen teknisnya lengkap: PRD, SRS, desain database, spesifikasi MQTT dan REST API, sampai panduan deploy.</p>
+        <p>Sistem pemantauan panel listrik berbasis ESP32 yang tetap mencatat data saat koneksi putus, dengan dokumentasi teknis lengkap dari PRD sampai panduan deploy. Sudah dipakai 1 klien.</p>
         <div class="chips"><span class="chip">ESP32</span><span class="chip">MQTT</span><span class="chip">Node.js</span><span class="chip">Flutter</span></div>
       </div>
       <div class="mini reveal">
@@ -529,11 +540,16 @@
   <div class="wrap">
     <div class="about">
       <div class="txt reveal">
+        <div class="me">
+        <img src="img/foto-santai.webp" alt="Foto Hartanto" width="480" height="600" loading="lazy">
+        <div>
         <div class="kicker">Tentang</div>
         <h2 style="font-size:clamp(26px,4vw,38px);font-weight:800;margin-bottom:20px">Halo, saya Hartanto</h2>
         <p>Saya tinggal di <b>Surabaya</b> dan sudah <b>lebih dari 3 tahun</b> bekerja di bidang IT, terutama integrasi sistem dan menjaga sistem yang berjalan di puluhan lokasi. Dari situ saya terbiasa membuat aplikasi yang harus tetap jalan setiap hari, bukan cuma bagus saat demo.</p>
         <p>Di luar itu saya membantu UMKM yang masih mengandalkan catatan manual. Prinsip saya sederhana: <b>aplikasinya harus lebih gampang daripada cara lama</b>, kalau tidak, karyawan akan kembali ke buku dan Excel.</p>
         <p>Saat ini saya juga sedang menempuh S1 Sistem Informasi di Universitas Terbuka.</p>
+        </div>
+        </div>
       </div>
       <div class="card reveal">
         <h3>Sertifikasi &amp; pencapaian</h3>
@@ -554,6 +570,7 @@
 
 <section class="final" id="kontak">
   <div class="wrap reveal">
+    <img src="img/avatar-santai.webp" alt="" width="76" height="76" loading="lazy" style="width:76px;height:76px;border-radius:50%;margin:0 auto 16px;border:3px solid var(--paper);box-shadow:0 0 0 1px var(--line)">
     <div class="kicker">Mulai dari obrolan</div>
     <h2>Ada pekerjaan di usaha kakak yang masih manual?</h2>
     <p>Ceritakan alurnya lewat WhatsApp. Saya bantu lihat bagian mana yang bisa dibuat otomatis, dan kira-kira berapa biayanya.</p>
@@ -613,6 +630,7 @@
 
   document.querySelectorAll("[data-link]").forEach(function(a){
     var url = links[a.getAttribute("data-link")];
+    if (url && !/^https?:\/\//i.test(url)) url = "https://" + url;
     if (url) a.href = url;
     else { var box = a.closest(".links"); (box || a).classList.add("hide"); }
   });
