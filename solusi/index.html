@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hartanto · Terobosan Solusi untuk Masalah Bisnis Anda</title>
+<meta name="description" content="Hartanto, Surabaya. Terobosan solusi digital untuk masalah bisnis Anda: nota dan invoice, titip jual, ongkir kurir, stok gudang, otomasi WhatsApp, sampai IoT. Breakthrough solutions for your business problems.">
+<meta property="og:title" content="Hartanto · Terobosan solusi untuk masalah bisnis Anda">
+<meta property="og:description" content="Ada masalah di bisnis Anda? Saya pelajari masalahnya, lalu buatkan solusi yang benar-benar dipakai.">
+<meta property="og:image" content="https://itsotnat.github.io/solusi/img/og.jpg">
+<meta name="theme-color" content="#F6F2EA">
+<link rel="icon" href="img/avatar-formal.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F2EA; --paper:#FFFDF8; --ink:#1A1D1B; --ink-2:#4A504C; --ink-3:#7A807B;
+    --line:#E4DED2; --green:#0E6A4E; --green-2:#E2F0E9; --clay:#C8572A; --clay-2:#FBE9DF;
+    --blue:#2A5BA8; --blue-2:#E4ECF8; --amber:#A86B00; --amber-2:#FBF0D9;
+    --r:18px; --mono:"JetBrains Mono", ui-monospace, monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 "Plus Jakarta Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{line-height:1.15;margin:0;letter-spacing:-.02em}
+  p{margin:0}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:10;background:rgba(246,242,234,.9);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+  .nav.scrolled{border-color:var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;text-decoration:none;font-size:17px}
+  .brand img{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid var(--paper);box-shadow:0 0 0 1px var(--line)}
+  .brand .mark{width:32px;height:32px;border-radius:10px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:15px}
+  .nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-weight:600;font-size:14.5px;color:var(--ink-2)}
+  .nav ul a{text-decoration:none}
+  .nav ul a:hover{color:var(--ink)}
+  @media (max-width:720px){.nav ul{display:none}}
+
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;border:1.5px solid var(--ink);transition:transform .15s, background .15s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-dark{background:var(--ink);color:var(--paper)}
+  .btn-green{background:var(--green);border-color:var(--green);color:#fff}
+  .btn-ghost{background:transparent}
+  .btn-demo{background:var(--green);border-color:var(--green);color:#fff;box-shadow:0 8px 18px -10px rgba(14,106,78,.8)}
+  .btn-demo:hover{background:#0B5A42}
+  .btn-demo svg{width:14px;height:14px}
+  .btn-sm{padding:8px 14px;font-size:13.5px}
+  .btn svg{width:18px;height:18px;flex:none}
+
+  /* hero */
+  .hero{padding:72px 0 56px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--ink-2);background:var(--paper);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+  .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px var(--green-2)}
+  .hero h1{font-size:clamp(34px,6vw,60px);font-weight:800;margin:22px 0 20px;max-width:14em}
+  .hero h1 em{font-style:normal;color:var(--green);background:linear-gradient(transparent 62%, var(--green-2) 62%)}
+  .hero .lead{font-size:clamp(16.5px,2vw,19px);color:var(--ink-2);max-width:36em}
+  .hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:52px}
+  .stats > div{background:var(--paper);padding:20px 22px}
+  .stats b{display:block;font-size:26px;font-weight:800;letter-spacing:-.02em}
+  .stats span{font-size:14px;color:var(--ink-3)}
+  @media (max-width:640px){.stats{grid-template-columns:1fr}.stats div{display:flex;align-items:baseline;gap:12px;padding:16px 18px}.stats b{font-size:22px;min-width:64px}}
+
+  section{padding:64px 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:32px}
+  .sec-head h2{font-size:clamp(26px,4vw,38px);font-weight:800}
+  .sec-head p{color:var(--ink-2);max-width:30em}
+  .kicker{font-family:var(--mono);font-size:12.5px;color:var(--clay);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+
+  /* project cards */
+  .projects{display:grid;gap:22px}
+  .proj{background:var(--paper);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:grid;grid-template-columns:1.05fr 1fr}
+  .proj.noimg{grid-template-columns:1fr}
+  @media (max-width:860px){.proj{grid-template-columns:1fr}}
+  .proj .body{padding:30px}
+  .proj-top{display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+  .icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;flex:none}
+  .icon svg{width:24px;height:24px}
+  .badge{font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
+  .badge::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+  .b-live{background:var(--green-2);color:var(--green)}
+  .b-demo{background:var(--blue-2);color:var(--blue)}
+  .b-soon{background:var(--amber-2);color:var(--amber)}
+  .b-proto{background:var(--clay-2);color:var(--clay)}
+  .cat{font-size:13px;color:var(--ink-3);font-weight:600}
+  .proj h3{font-size:27px;font-weight:800}
+  .proj .tag{color:var(--ink-2);margin:6px 0 22px;font-size:16.5px}
+  .ps{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+  @media (max-width:560px){.ps{grid-template-columns:1fr}}
+  .ps div{border-radius:14px;padding:14px 16px;font-size:14.5px;line-height:1.55}
+  .ps .p{background:#F3EFE7}
+  .ps .s{background:var(--green-2)}
+  .ps small{display:block;font-weight:800;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;color:var(--ink-3)}
+  .ps .s small{color:var(--green)}
+  .feat{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:8px;font-size:15px}
+  .feat li{display:flex;gap:10px;align-items:flex-start}
+  .feat li::before{content:"";flex:none;width:18px;height:18px;margin-top:3px;border-radius:6px;background:var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/12px no-repeat}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+  .chip{font-family:var(--mono);font-size:12px;padding:4px 9px;border-radius:7px;border:1px solid var(--line);color:var(--ink-2);background:var(--bg)}
+  .links{display:flex;gap:10px;flex-wrap:wrap}
+  .gallery{position:relative;background:#ECE6D9;padding:34px 30px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .gallery::before{content:"";position:absolute;inset:auto -20% -40% auto;width:70%;aspect-ratio:1;border-radius:50%;background:var(--glow,#DCEFE6);opacity:.9}
+  .gallery img{display:block;width:100%;height:auto}
+  .desk{position:relative;width:100%;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 24px 50px -24px rgba(26,29,27,.45);border:1px solid rgba(0,0,0,.08)}
+  .desk::before{content:"";display:block;height:22px;background:#F4F1EA url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='10'%3E%3Ccircle cx='5' cy='5' r='4' fill='%23E5A39A'/%3E%3Ccircle cx='19' cy='5' r='4' fill='%23E9CC8A'/%3E%3Ccircle cx='33' cy='5' r='4' fill='%23A9CFA3'/%3E%3C/svg%3E") 10px center no-repeat;border-bottom:1px solid rgba(0,0,0,.06)}
+  .phone{position:relative;border-radius:26px;overflow:hidden;background:#111;border:6px solid #16191A;box-shadow:0 24px 50px -20px rgba(26,29,27,.55)}
+  .duo{position:relative;width:100%;padding:0 18% 9% 0}
+  .duo .phone{position:absolute;right:0;bottom:0;width:30%}
+  .pair{display:flex;gap:16px;justify-content:center;align-items:flex-start;width:100%}
+  .pair .phone{width:44%;max-width:230px}
+  .pair .phone:last-child{margin-top:34px}
+  @media (max-width:860px){.gallery{order:-1;padding:24px 18px}}
+
+  /* other projects */
+  .grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  @media (max-width:700px){.grid4{grid-template-columns:1fr}}
+  .mini{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column}
+  .mini .proj-top{margin-bottom:14px}
+  .mini h3{font-size:19px;font-weight:800;margin-bottom:6px}
+  .mini p{color:var(--ink-2);font-size:15px;margin-bottom:16px;flex:1}
+  .mini .chips{margin:0}
+
+  /* services */
+  .svc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media (max-width:900px){.svc{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){.svc{grid-template-columns:1fr}}
+  .svc > div{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+  .svc .icon{margin-bottom:14px}
+  .svc h3{font-size:17px;font-weight:800;margin-bottom:6px}
+  .svc p{font-size:14.5px;color:var(--ink-2)}
+
+  /* steps */
+  .dark{background:var(--ink);color:var(--paper);border-radius:28px;padding:48px 40px}
+  @media (max-width:640px){.dark{padding:34px 22px;border-radius:22px}}
+  .dark .sec-head p{color:#B9BFBA}
+  .dark .kicker{color:#F0A07D}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+  @media (max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+  @media (max-width:520px){.steps{grid-template-columns:1fr}}
+  .steps > div{border:1px solid #343A36;border-radius:16px;padding:20px;counter-increment:s}
+  .steps > div::before{content:"0" counter(s);font-family:var(--mono);color:#F0A07D;font-size:13px;display:block;margin-bottom:12px}
+  .steps h3{font-size:17px;margin-bottom:6px}
+  .steps p{font-size:14.5px;color:#B9BFBA}
+  .pricing-note{margin-top:22px;padding:16px 20px;border-radius:14px;background:#252A27;color:#D8DDD9;font-size:15px}
+  .pricing-note b{color:#fff}
+
+  /* about */
+  .about{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:start}
+  @media (max-width:860px){.about{grid-template-columns:1fr}}
+  .me{display:grid;grid-template-columns:170px 1fr;gap:24px;align-items:start}
+  .me img{width:170px;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:20px;box-shadow:0 20px 40px -22px rgba(26,29,27,.5);background:#eee}
+  @media (max-width:560px){.me{grid-template-columns:1fr}.me img{width:150px}}
+  .about .txt p{color:var(--ink-2);font-size:16.5px;margin-bottom:14px}
+  .about .txt p b{color:var(--ink)}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+  .card h3{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin-bottom:14px}
+  .cert{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:12px}
+  .cert li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+  .cert li > span:first-child{font-family:var(--mono);font-size:12px;color:var(--ink-3);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px 7px;flex:none;margin-top:2px}
+
+  /* cta */
+  .final{text-align:center;padding:80px 0 64px}
+  .final h2{font-size:clamp(28px,5vw,46px);font-weight:800;max-width:16em;margin:0 auto 16px}
+  .final p{color:var(--ink-2);max-width:32em;margin:0 auto 28px;font-size:17px}
+  .final .cta{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+  .contact-line{margin-top:18px;font-size:14px;color:var(--ink-3)}
+  footer{border-top:1px solid var(--line);padding:24px 0;font-size:13.5px;color:var(--ink-3)}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .hide{display:none!important}
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+  /* language switch */
+  .nav-r{display:flex;align-items:center;gap:10px}
+  .lang{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:3px;background:var(--paper)}
+  .lang button{border:0;background:none;font:700 12.5px/1 "Plus Jakarta Sans",system-ui,sans-serif;padding:7px 10px;border-radius:999px;cursor:pointer;color:var(--ink-3);letter-spacing:.04em}
+  .lang button.on{background:var(--ink);color:var(--paper)}
+</style>
+</head>
+<body>
+
+<!--
+  =========================================================
+  GANTI DI SINI: isi data kontak dan link kamu.
+  Kosongkan ("") kalau belum ada, tombolnya otomatis disembunyikan.
+  Teks halaman: versi Indonesia ada di isi tag, versi English ada di atribut data-en.
+  =========================================================
+-->
+<script>
+  window.PORTFOLIO = {
+    whatsapp: "6283856554817",       // pakai 62, tanpa + atau 0 di depan
+    threads: "hartanto___tok",        // tanpa @
+    email: "hartanto.support@gmail.com",
+    github: "itsotnat",
+    linkedin: "hartanto75",
+    links: {
+      notacuci: "https://notacuci.lapakus.com",
+      jemputantar: "",               // link demo JemputAntar
+      umkmtitip: "https://umkm-titip.web.id",
+      gudangku: "",                  // link demo GudangKu (pakai data contoh)
+      kostpink: ""                   // link halaman Kost Pink
+    },
+    waText: "Halo Hartanto, saya lihat halaman solusinya. Saya punya masalah di bisnis yang ingin saya ceritakan.",
+    waTextEn: "Hi Hartanto, I saw your solutions page. I have a business problem I'd like to discuss."
+  };
+</script>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="img/avatar-formal.webp" alt="" width="34" height="34">Hartanto</a>
+    <ul>
+      <li><a href="#project" data-en="Case studies">Studi kasus</a></li>
+      <li><a href="#layanan" data-en="Services">Layanan</a></li>
+      <li><a href="#cara-kerja" data-en="How it works">Cara kerja</a></li>
+      <li><a href="#tentang" data-en="About">Tentang</a></li>
+    </ul>
+    <div class="nav-r">
+      <div class="lang" role="group" aria-label="Bahasa / Language"><button type="button" data-lang="id">ID</button><button type="button" data-lang="en">EN</button></div>
+      <a class="btn btn-dark btn-sm" data-wa href="#kontak">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+        <span>Chat</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span><span data-en="Surabaya · working with clients anywhere">Surabaya · terima proyek dari mana saja</span></span>
+    <h1 data-en="Got a problem in your business? I build the <em>breakthrough</em>.">Ada masalah di bisnis Anda? Saya buatkan <em>terobosannya</em>.</h1>
+    <p class="lead" data-en="I'm Hartanto. I don't just build apps: I study the problem first, then build a solution people actually use every day. From laundry invoices, consignment sales and courier fees to warehouse stock and IoT monitoring.">Saya Hartanto. Saya tidak sekadar membuat aplikasi: saya pelajari dulu masalahnya, lalu membangun solusi yang benar-benar dipakai setiap hari. Mulai dari nota laundry, titip jual, ongkir kurir, stok gudang, sampai monitoring IoT.</p>
+    <div class="cta">
+      <a class="btn btn-green" data-wa href="#kontak">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+        <span data-en="Tell me your problem">Ceritakan masalah Anda</span>
+      </a>
+      <a class="btn btn-ghost" href="#project" data-en="See the solutions">Lihat solusinya</a>
+    </div>
+    <div class="stats">
+      <div><b data-en="3+ yrs">3+ th</b><span data-en="experience in IT">pengalaman di bidang IT</span></div>
+      <div><b>16</b><span data-en="businesses use my solutions">usaha memakai solusi saya</span></div>
+      <div><b>11</b><span data-en="projects built">project sudah dibangun</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="project">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="kicker" data-en="Case studies">Studi kasus</div>
+        <h2 data-en="Real problems, real solutions">Masalah nyata, solusi nyata</h2>
+      </div>
+      <p data-en="Every solution starts from an everyday problem, not from features that merely look impressive.">Setiap solusi berangkat dari masalah sehari-hari, bukan dari fitur yang sekadar kelihatan keren.</p>
+    </div>
+
+    <div class="projects">
+
+      <!-- NotaCuci -->
+      <article class="proj reveal">
+        <div class="body">
+          <div class="proj-top">
+            <div class="icon" style="background:var(--green-2);color:var(--green)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>
+            </div>
+            <span class="badge b-live" data-en="Used by 3 clients">Dipakai 3 klien</span>
+            <span class="cat" data-en="Laundry · Monthly subscription">Laundry · Langganan bulanan</span>
+          </div>
+          <h3>NotaCuci</h3>
+          <p class="tag" data-en="Order slips, invoices and monthly recaps for laundry businesses.">Dashboard nota, invoice, dan rekap untuk usaha laundry.</p>
+          <div class="ps">
+            <div class="p"><small data-en="Problem">Masalah</small><span data-en="Handwritten order slips, manual invoices for regular customers, and monthly recaps that eat up hours.">Nota ditulis tangan, invoice pelanggan langganan dibuat manual, dan rekap bulanan makan waktu.</span></div>
+            <div class="s"><small data-en="Solution">Solusi</small><span data-en="Every transaction lands in one dashboard. Invoices and monthly recaps generate themselves.">Semua transaksi masuk satu dashboard. Invoice dan rekap bulanan keluar sendiri.</span></div>
+          </div>
+          <ul class="feat">
+            <li data-en="Per-kilo and per-item slips that turn straight into invoices">Nota kiloan dan satuan, langsung jadi invoice</li>
+            <li data-en="PO, DO and invoice flow for corporate customers">Alur PO, DO, sampai invoice untuk pelanggan korporat</li>
+            <li data-en="PDF downloads and monthly recaps in Excel">Unduh PDF dan rekap bulanan ke Excel</li>
+            <li data-en="Send slips to customers via WhatsApp">Kirim nota ke pelanggan lewat WhatsApp</li>
+          </ul>
+          <div class="chips"><span class="chip">Web app</span><span class="chip">PDF</span><span class="chip">Excel</span><span class="chip">WhatsApp</span><span class="chip">VPS</span></div>
+          <div class="links"><a class="btn btn-demo btn-sm" data-link="notacuci" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span data-en="Try demo">Coba demo</span></a></div>
+        </div>
+        <div class="gallery" style="--glow:#D5ECE4">
+          <div class="duo">
+            <div class="desk"><img src="img/notacuci-desktop.webp" alt="NotaCuci" loading="lazy" width="1200" height="750"></div>
+            <div class="phone"><img src="img/notacuci-hp.webp" alt="NotaCuci" loading="lazy" width="420" height="840"></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- UMKM Titip -->
+      <article class="proj reveal">
+        <div class="body">
+          <div class="proj-top">
+            <div class="icon" style="background:var(--amber-2);color:var(--amber)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9h18M9 20v-6h6v6"/></svg>
+            </div>
+            <span class="badge b-live" data-en="Used by 10 small businesses">Dipakai 10 mitra UMKM</span>
+            <span class="cat" data-en="Consignment food · Android">Makanan titip jual · Android</span>
+          </div>
+          <h3>UMKM Titip</h3>
+          <p class="tag" data-en="Consignment tracking for food sold through stalls, canteens and shops. Live and used by 10 small businesses.">Pencatatan titip jual ke warung, kantin, dan toko. Sudah rilis dan dipakai 10 mitra UMKM.</p>
+          <div class="ps">
+            <div class="p"><small data-en="Problem">Masalah</small><span data-en="Food producers consign to many outlets every day. Deliveries and returns get lost in chat, and losses from unsold goods stay invisible.">Produsen makanan harian menitip ke banyak outlet. Barang kirim dan retur tercecer di chat, rugi dari barang tak laku tidak kelihatan.</span></div>
+            <div class="s"><small data-en="Solution">Solusi</small><span data-en="Log deliveries and returns per outlet each day. Revenue and profit are calculated automatically.">Catat kirim dan retur per outlet tiap hari. Omzet dan untung rugi dihitung otomatis.</span></div>
+          </div>
+          <ul class="feat">
+            <li data-en="Product master with cost and selling price filled in automatically">Master produk dengan HPP dan harga jual yang terisi otomatis</li>
+            <li data-en="Per-outlet reports (best-selling, average, slow) with Excel export">Laporan per outlet: laris, standar, kurang, plus ekspor Excel</li>
+            <li data-en="Direct orders with payment status and due dates">Pesanan langsung dengan status bayar dan jatuh tempo</li>
+            <li data-en="Works without signal, syncs when back online">Tetap jalan tanpa sinyal, sinkron saat online lagi</li>
+          </ul>
+          <div class="chips"><span class="chip">Android</span><span class="chip">Offline-first</span><span class="chip">REST API</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span></div>
+          <div class="links"><a class="btn btn-dark btn-sm" data-link="umkmtitip" target="_blank" rel="noopener"><span data-en="Visit site">Kunjungi situs</span></a></div>
+        </div>
+        <div class="gallery" style="--glow:#F3E3B8">
+          <div class="pair">
+            <div class="phone"><img src="img/umkmtitip-beranda.webp" alt="UMKM Titip" loading="lazy" width="420" height="952"></div>
+            <div class="phone"><img src="img/umkmtitip-laporan.webp" alt="UMKM Titip" loading="lazy" width="420" height="945"></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- JemputAntar -->
+      <article class="proj reveal">
+        <div class="body">
+          <div class="proj-top">
+            <div class="icon" style="background:var(--blue-2);color:var(--blue)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5"/></svg>
+            </div>
+            <span class="badge b-demo" data-en="Live demo">Demo bisa dicoba</span>
+            <span class="cat">Pick up &amp; delivery · PWA</span>
+          </div>
+          <h3>JemputAntar</h3>
+          <p class="tag" data-en="Courier distance and fees calculated automatically, sent straight to Google Sheets.">Jarak dan ongkir kurir terhitung otomatis, langsung masuk ke Google Sheets.</p>
+          <div class="ps">
+            <div class="p"><small data-en="Problem">Masalah</small><span data-en="Couriers log orders in Sheets, then the owner checks each distance in Google Maps and works out the fee by hand.">Kurir mencatat order di Sheets, lalu owner cek jarak satu per satu di Google Maps dan menghitung ongkir sendiri.</span></div>
+            <div class="s"><small data-en="Solution">Solusi</small><span data-en="Couriers enter pickup and drop-off points. Road distance and the fee appear instantly.">Kurir isi titik jemput dan antar. Jarak lewat jalan dan ongkirnya keluar saat itu juga.</span></div>
+          </div>
+          <ul class="feat">
+            <li data-en="Points from an address, a Google Maps link, phone GPS, or a tap on the map">Titik dari alamat, link Google Maps, GPS HP, atau klik di peta</li>
+            <li data-en="Adjustable fee formula: base fare, per km, minimum, rounding">Rumus tarif bisa diatur: tarif dasar, per km, minimal, pembulatan</li>
+            <li data-en="History per courier, total distance and fees, CSV export">Riwayat per kurir, total jarak dan ongkir, ekspor CSV</li>
+            <li data-en="Installs on the home screen like a regular app">Bisa dipasang di layar utama HP seperti aplikasi biasa</li>
+          </ul>
+          <div class="chips"><span class="chip">PWA</span><span class="chip">OpenStreetMap</span><span class="chip">OSRM</span><span class="chip">Google Sheets</span><span class="chip">Apps Script</span></div>
+          <div class="links"><a class="btn btn-demo btn-sm" data-link="jemputantar" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span data-en="Try demo">Coba demo</span></a></div>
+        </div>
+        <div class="gallery" style="--glow:#DCE6F6">
+          <div class="pair">
+            <div class="phone"><img src="img/jemputantar-order.webp" alt="JemputAntar" loading="lazy" width="420" height="840"></div>
+            <div class="phone"><img src="img/jemputantar-riwayat.webp" alt="JemputAntar" loading="lazy" width="420" height="840"></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- GudangKu -->
+      <article class="proj reveal">
+        <div class="body">
+          <div class="proj-top">
+            <div class="icon" style="background:var(--clay-2);color:var(--clay)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>
+            </div>
+            <span class="badge b-live" data-en="Used by 1 client">Dipakai 1 klien</span>
+            <span class="cat" data-en="Warehouse · Works offline">Gudang · Bisa offline</span>
+          </div>
+          <h3>GudangKu</h3>
+          <p class="tag" data-en="A simple, affordable warehouse app for businesses that don't need a heavy system yet.">Aplikasi gudang sederhana dan terjangkau untuk usaha yang belum butuh sistem besar.</p>
+          <div class="ps">
+            <div class="p"><small data-en="Problem">Masalah</small><span data-en="Existing warehouse software is too complex and expensive for small businesses, so stock is still tracked by hand.">Software gudang yang ada terlalu rumit dan mahal untuk usaha kecil, jadi stok tetap dicatat manual.</span></div>
+            <div class="s"><small data-en="Solution">Solusi</small><span data-en="One lightweight app for stock in, stock out, stock cards and reorder forecasts. Works without internet.">Satu aplikasi ringan untuk barang masuk, barang keluar, kartu stok, dan perkiraan order. Bisa dipakai tanpa internet.</span></div>
+          </div>
+          <ul class="feat">
+            <li data-en="Stock in and out recorded by invoice number">Barang masuk dan keluar tercatat berdasarkan nomor invoice</li>
+            <li data-en="Low-stock alerts and a stock card for every item">Peringatan stok menipis dan kartu stok per barang</li>
+            <li data-en="Demand forecast with suggested order quantities">Perkiraan kebutuhan dan saran jumlah order</li>
+            <li data-en="A single file that runs on the warehouse computer">Satu file, langsung jalan di komputer gudang</li>
+          </ul>
+          <div class="chips"><span class="chip">Web app</span><span class="chip">Offline</span><span class="chip">Forecast</span><span class="chip">Single file</span></div>
+          <div class="links"><a class="btn btn-demo btn-sm" data-link="gudangku" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span data-en="Try demo">Coba demo</span></a></div>
+        </div>
+        <div class="gallery" style="--glow:#F6E2D6">
+          <div class="duo">
+            <div class="desk"><img src="img/gudangku-desktop.webp" alt="GudangKu" loading="lazy" width="1200" height="750"></div>
+            <div class="phone"><img src="img/gudangku-hp.webp" alt="GudangKu" loading="lazy" width="420" height="840"></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Kost Pink -->
+      <article class="proj reveal">
+        <div class="body">
+          <div class="proj-top">
+            <div class="icon" style="background:#FBE3F1;color:#B5307A">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21v-6h6v6"/></svg>
+            </div>
+            <span class="badge b-live" data-en="Used by 1 client">Dipakai 1 klien</span>
+            <span class="cat" data-en="Boarding house · Landing page">Kos-kosan · Landing page</span>
+          </div>
+          <h3>Kost Pink</h3>
+          <p class="tag" data-en="A promo page for a boarding house in Siwalankerto, Surabaya, that sends prospective tenants straight to WhatsApp.">Halaman promosi kos di Siwalankerto, Surabaya, yang langsung mengarahkan calon penghuni ke WhatsApp.</p>
+          <div class="ps">
+            <div class="p"><small data-en="Problem">Masalah</small><span data-en="Prospective tenants keep asking the same things in chat: price, facilities and location.">Calon penghuni menanyakan hal yang sama berulang kali lewat chat: harga, fasilitas, dan lokasi.</span></div>
+            <div class="s"><small data-en="Solution">Solusi</small><span data-en="One page with room photos, facilities, a clear cost breakdown and a map, plus a WhatsApp button.">Satu halaman berisi foto kamar, fasilitas, rincian biaya, dan peta, dengan tombol chat WhatsApp.</span></div>
+          </div>
+          <ul class="feat">
+            <li data-en="Photos of rooms and shared facilities">Foto kamar dan fasilitas bersama</li>
+            <li data-en="Clear costs with no hidden fees">Rincian biaya yang jelas, tanpa biaya tersembunyi</li>
+            <li data-en="A WhatsApp button in every section, mobile friendly">Tombol WhatsApp di setiap bagian, rapi di HP</li>
+          </ul>
+          <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Responsive</span><span class="chip">WhatsApp</span></div>
+          <div class="links"><a class="btn btn-dark btn-sm" data-link="kostpink" target="_blank" rel="noopener"><span data-en="View page">Lihat halaman</span></a></div>
+        </div>
+        <div class="gallery" style="--glow:#F7DCEB">
+          <div class="duo">
+            <div class="desk"><img src="img/kostpink-desktop.webp" alt="Kost Pink" loading="lazy" width="1200" height="750"></div>
+            <div class="phone"><img src="img/kostpink-hp.webp" alt="Kost Pink" loading="lazy" width="420" height="840"></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:8px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="kicker" data-en="More solutions">Solusi lain</div>
+        <h2 data-en="Automation, IoT and data">Otomasi, IoT, dan data</h2>
+      </div>
+      <p data-en="Custom builds, personal projects and research in WhatsApp bots, hardware and data processing.">Pesanan khusus, project pribadi, dan riset di bot WhatsApp, perangkat keras, dan pengolahan data.</p>
+    </div>
+    <div class="grid4">
+      <div class="mini reveal">
+        <div class="proj-top">
+          <div class="icon" style="background:var(--green-2);color:var(--green)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/><path d="M12 8v4l2.5 1.5"/></svg></div>
+          <span class="badge b-live" data-en="Running">Berjalan</span>
+        </div>
+        <h3 data-en="WhatsApp Schedule &amp; Finance Bot">Bot WhatsApp Jadwal &amp; Keuangan</h3>
+        <p data-en="Log schedules and expenses just by chatting on WhatsApp. Automatic reminders an hour before events, multiple owners, and Excel export. Runs 24/7 on a Raspberry Pi.">Catat jadwal dan pengeluaran cukup lewat chat WhatsApp. Pengingat otomatis 1 jam sebelum acara, bisa dipakai beberapa pemilik, dan rekap bisa diekspor ke Excel. Jalan 24 jam di Raspberry Pi.</p>
+        <div class="chips"><span class="chip">Node.js</span><span class="chip">SQLite</span><span class="chip">node-cron</span><span class="chip">Raspberry Pi</span></div>
+      </div>
+      <div class="mini reveal">
+        <div class="proj-top">
+          <div class="icon" style="background:var(--blue-2);color:var(--blue)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></div>
+          <span class="badge b-live" data-en="Used by 1 client">Dipakai 1 klien</span>
+        </div>
+        <h3 data-en="IoT Panel Monitoring Platform">Platform Monitoring Panel IoT</h3>
+        <p data-en="ESP32-based electrical panel monitoring that keeps logging when the connection drops, with full technical documentation from PRD to deployment guide. Used by 1 client.">Sistem pemantauan panel listrik berbasis ESP32 yang tetap mencatat data saat koneksi putus, dengan dokumentasi teknis lengkap dari PRD sampai panduan deploy. Sudah dipakai 1 klien.</p>
+        <div class="chips"><span class="chip">ESP32</span><span class="chip">MQTT</span><span class="chip">Node.js</span><span class="chip">Flutter</span></div>
+      </div>
+      <div class="mini reveal">
+        <div class="proj-top">
+          <div class="icon" style="background:var(--green-2);color:var(--green)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 11c0 3-1 6-3 8M8 6.5A6 6 0 0 1 18 11c0 2.2-.3 4.3-1 6.2M6 9.5c-.3.5-.5 1-.6 1.5M12 3a8 8 0 0 1 8 8M4.5 14.5C5 16 5 17 4.5 18.5M15 11a3 3 0 0 0-6 0c0 1.3-.2 2.6-.6 3.8"/></svg></div>
+          <span class="badge b-demo" data-en="Done">Selesai</span>
+        </div>
+        <h3>FingerPay</h3>
+        <p data-en="Payroll straight from fingerprint machine data. Base pay, overtime and deductions are calculated automatically, with no more manual attendance recaps. Freelance project.">Sistem penggajian dari data mesin fingerprint. Gaji pokok, lembur, dan potongan dihitung otomatis, tidak perlu rekap absen manual lagi. Project freelance.</p>
+        <div class="chips"><span class="chip">Java</span><span class="chip">MySQL</span></div>
+      </div>
+      <div class="mini reveal">
+        <div class="proj-top">
+          <div class="icon" style="background:var(--amber-2);color:var(--amber)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5M14 10V4a2 2 0 0 0-4 0v6M10 10.5V6a2 2 0 0 0-4 0v8a8 8 0 0 0 16 0v-3a2 2 0 0 0-4 0"/></svg></div>
+          <span class="badge b-demo" data-en="Done">Selesai</span>
+        </div>
+        <h3>Hand Talk</h3>
+        <p data-en="Real-time hand gesture recognition through a camera. Recognised gestures are turned into speech, with particle visual effects.">Aplikasi pengenal gerakan tangan secara real-time lewat kamera. Gerakan yang dikenali diubah jadi suara, dilengkapi efek visual partikel.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">MediaPipe</span><span class="chip">Web Speech API</span></div>
+      </div>
+      <div class="mini reveal">
+        <div class="proj-top">
+          <div class="icon" style="background:var(--clay-2);color:var(--clay)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+          <span class="badge b-demo" data-en="Done">Selesai</span>
+        </div>
+        <h3 data-en="TikTok Comment Sentiment Analysis">Analisis Sentimen Komentar TikTok</h3>
+        <p data-en="Collected comments from TikTok and Shopee, labelled their sentiment, then tested label consistency with Krippendorff's Alpha (α = 0.728). Compiled into a full report.">Mengumpulkan komentar dari TikTok dan Shopee, memberi label sentimen, lalu menguji konsistensi label dengan Krippendorff's Alpha (α = 0,728). Hasilnya disusun jadi laporan lengkap.</p>
+        <div class="chips"><span class="chip">Scraping</span><span class="chip">Python</span><span class="chip" data-en="Data analysis">Analisis data</span></div>
+      </div>
+      <div class="mini reveal">
+        <div class="proj-top">
+          <div class="icon" style="background:var(--blue-2);color:var(--blue)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></div>
+          <span class="badge b-live" data-en="Top 100 finalist">Top 100 finalis</span>
+        </div>
+        <h3 data-en="Retail Crisis &amp; Recovery Visualization">Visualisasi Krisis &amp; Pemulihan Ritel</h3>
+        <p data-en="DQLab Hackathon: cleaned inconsistent time-series data and built a visualisation pipeline. Ranked 32 out of 464 participants.">DQLab Hackathon: merapikan data time-series yang tidak konsisten lalu menyusun pipeline visualisasi. Peringkat 32 dari 464 peserta.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">Matplotlib</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="layanan">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="kicker" data-en="Services">Layanan</div>
+        <h2 data-en="Problems I can solve">Masalah yang bisa saya selesaikan</h2>
+      </div>
+      <p data-en="Don't see your problem here? Tell me anyway. There's usually a way out.">Masalah Anda tidak ada di daftar ini? Ceritakan saja. Biasanya tetap ada jalan keluarnya.</p>
+    </div>
+    <div class="svc">
+      <div class="reveal">
+        <div class="icon" style="background:var(--green-2);color:var(--green)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></div>
+        <h3 data-en="Slips and invoices still done by hand">Nota &amp; tagihan masih manual</h3>
+        <p data-en="Tidy slips, invoices, POs and DOs you can print, download as PDF or send to customers.">Nota, invoice, PO, dan DO jadi rapi, bisa dicetak, diunduh PDF, atau dikirim ke pelanggan.</p>
+      </div>
+      <div class="reveal">
+        <div class="icon" style="background:var(--blue-2);color:var(--blue)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <h3 data-en="Data scattered across Excel and chat">Data tercecer di Excel &amp; chat</h3>
+        <p data-en="Data living in Excel, Google Sheets or chat becomes one system with automatic reports.">Data yang selama ini di Excel, Google Sheets, atau chat dijadikan satu sistem dengan laporan otomatis.</p>
+      </div>
+      <div class="reveal">
+        <div class="icon" style="background:var(--amber-2);color:var(--amber)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
+        <h3 data-en="Couriers, fees and stock hard to track">Kurir, ongkir &amp; stok sulit dipantau</h3>
+        <p data-en="Fees calculated from distance, recaps per courier, and warehouse stock tracked in real time.">Ongkir dihitung dari jarak, rekap per kurir, dan stok gudang terpantau real-time.</p>
+      </div>
+      <div class="reveal">
+        <div class="icon" style="background:var(--clay-2);color:var(--clay)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg></div>
+        <h3 data-en="Customers and staff need constant reminders">Pelanggan &amp; tim harus terus diingatkan</h3>
+        <p data-en="Automatic slips, reminders and alerts via WhatsApp, the channel everyone already uses.">Nota, pengingat, dan notifikasi otomatis lewat WhatsApp, saluran yang sudah dipakai semua orang.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cara-kerja">
+  <div class="wrap">
+    <div class="dark reveal">
+      <div class="sec-head">
+        <div>
+          <div class="kicker" data-en="How it works">Cara kerja</div>
+          <h2 data-en="Try first, then decide">Coba dulu, baru putuskan</h2>
+        </div>
+        <p data-en="So you never pay for something you can't picture yet.">Supaya Anda tidak membeli sesuatu yang belum kebayang bentuknya.</p>
+      </div>
+      <div class="steps">
+        <div><h3 data-en="Tell me the problem">Ceritakan masalahnya</h3><p data-en="Just chat: how things run today, and which part causes the most headaches.">Lewat chat saja: alurnya sekarang seperti apa, dan bagian mana yang paling bikin repot.</p></div>
+        <div><h3 data-en="I build a prototype">Saya buatkan prototype</h3><p data-en="A working sample you can try on your phone, shaped around your workflow.">Contoh solusi yang bisa langsung dicoba di HP, sesuai alur kerja Anda.</p></div>
+        <div><h3 data-en="Try &amp; adjust">Coba &amp; sesuaikan</h3><p data-en="You and your team try it, then tell me what to change or add.">Anda dan tim mencoba, lalu kabari apa yang perlu diubah atau ditambah.</p></div>
+        <div><h3 data-en="Used every day">Dipakai harian</h3><p data-en="The solution goes live and is used daily, with support when issues come up.">Solusi dipasang dan dipakai setiap hari, dengan dukungan kalau ada kendala.</p></div>
+      </div>
+      <div class="pricing-note" data-en="<b>Pricing options:</b> a light monthly subscription, or a one-time purchase if you'd rather own it. Details follow your needs."><b>Pilihan biaya:</b> langganan bulanan yang ringan, atau beli putus untuk yang ingin memilikinya sendiri. Detailnya menyesuaikan kebutuhan.</div>
+    </div>
+  </div>
+</section>
+
+<section id="tentang">
+  <div class="wrap">
+    <div class="about">
+      <div class="txt reveal">
+        <div class="me">
+        <img src="img/foto-formal.webp" alt="Hartanto" width="480" height="600" loading="lazy">
+        <div>
+        <div class="kicker" data-en="About">Tentang</div>
+        <h2 style="font-size:clamp(26px,4vw,38px);font-weight:800;margin-bottom:20px" data-en="Hi, I'm Hartanto">Halo, saya Hartanto</h2>
+        <p data-en="I'm based in <b>Surabaya</b> and have spent <b>over 3 years</b> in IT, mostly in system integration and keeping systems running across dozens of sites. That work trained me to dig for the root cause and build things that have to work every single day, not just look good in a demo.">Saya tinggal di <b>Surabaya</b> dan sudah <b>lebih dari 3 tahun</b> bekerja di bidang IT, terutama integrasi sistem dan menjaga sistem yang berjalan di puluhan lokasi. Dari situ saya terbiasa mencari akar masalah dan membangun sistem yang harus jalan setiap hari, bukan cuma bagus saat demo.</p>
+        <p data-en="I also help businesses that are stuck on manual work. My principle is simple: <b>the solution must be easier than the old way</b>, otherwise people go back to paper and Excel.">Di luar itu saya membantu bisnis yang masih terjebak pekerjaan manual. Prinsip saya sederhana: <b>solusinya harus lebih gampang daripada cara lama</b>, kalau tidak, orang akan kembali ke buku dan Excel.</p>
+        <p data-en="I'm also currently studying for a bachelor's degree in Information Systems at Universitas Terbuka.">Saat ini saya juga sedang menempuh S1 Sistem Informasi di Universitas Terbuka.</p>
+        </div>
+        </div>
+      </div>
+      <div class="card reveal">
+        <h3 data-en="Certifications &amp; achievements">Sertifikasi &amp; pencapaian</h3>
+        <ul class="cert">
+          <li><span>2021</span>BNSP: Data Management</li>
+          <li><span>2018</span><span class="ct" data-en="BNSP: Computer and Network Engineering">BNSP: Teknik Komputer dan Jaringan</span></li>
+          <li><span>100%</span>Hacktiv8 x IBM SkillsBuild: AI Agent for Data Analysis</li>
+          <li><span>#32</span><span class="ct" data-en="DQLab Hackathon, out of 464 participants">DQLab Hackathon, dari 464 peserta</span></li>
+        </ul>
+        <h3 data-en="Tech I use">Teknologi yang saya pakai</h3>
+        <div class="chips" style="margin:0">
+          <span class="chip">Node.js</span><span class="chip">React</span><span class="chip">Python</span><span class="chip">C# / .NET</span><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">Supabase</span><span class="chip">Docker</span><span class="chip">Linux</span><span class="chip">Nginx</span><span class="chip">PWA</span><span class="chip">IoT</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="kontak">
+  <div class="wrap reveal">
+    <img src="img/avatar-formal.webp" alt="" width="76" height="76" loading="lazy" style="width:76px;height:76px;border-radius:50%;margin:0 auto 16px;border:3px solid var(--paper);box-shadow:0 0 0 1px var(--line)">
+    <div class="kicker" data-en="Start with a chat">Mulai dari obrolan</div>
+    <h2 data-en="Got a problem that still needs a solution?">Ada masalah yang belum ketemu solusinya?</h2>
+    <p data-en="Tell me about it on WhatsApp. I'll help you find the root cause, the most sensible solution, and a rough cost.">Ceritakan lewat WhatsApp. Saya bantu lihat akar masalahnya, solusi yang paling masuk akal, dan kira-kira biayanya.</p>
+    <div class="cta">
+      <a class="btn btn-green" data-wa href="#kontak">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+        <span data-en="Chat on WhatsApp">Chat WhatsApp</span>
+      </a>
+      <a class="btn btn-ghost" data-threads target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M16 12v1.5a2.5 2.5 0 0 0 5 0V12a9 9 0 1 0-3.5 7.1"/></svg>
+        Threads
+      </a>
+      <a class="btn btn-ghost" data-github target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.3-4-2-6-2.5M15 21v-3.5a3 3 0 0 0-.8-2.3c2.8-.3 5.8-1.4 5.8-6.2a4.8 4.8 0 0 0-1.3-3.3 4.5 4.5 0 0 0-.1-3.3s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6.2 0C6.6 1.6 5.6 1.9 5.6 1.9a4.5 4.5 0 0 0-.1 3.3A4.8 4.8 0 0 0 4.2 8.5c0 4.8 3 5.9 5.8 6.2a3 3 0 0 0-.8 2.3V21"/></svg>
+        GitHub
+      </a>
+      <a class="btn btn-ghost" data-linkedin target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2.5 2.5 0 0 1 5 0v4M12 10v7"/></svg>
+        LinkedIn
+      </a>
+    </div>
+    <p class="contact-line" id="contactLine"></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> Hartanto · Surabaya</span>
+    <a href="https://itsotnat.github.io/" style="text-decoration:none" data-en="My profile &amp; CV →">Profil &amp; CV saya →</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var C = window.PORTFOLIO || {};
+  var links = C.links || {};
+  var digits = (C.whatsapp || "").replace(/\D/g, "");
+  var TITLES = {
+    id: "Hartanto · Terobosan Solusi untuk Masalah Bisnis Anda",
+    en: "Hartanto · Breakthrough Solutions for Your Business Problems"
+  };
+  var LANG = "id";
+
+  function setWa(){
+    var text = LANG === "en" ? (C.waTextEn || C.waText) : C.waText;
+    var url = digits ? "https://wa.me/" + digits + "?text=" + encodeURIComponent(text || "") : "";
+    document.querySelectorAll("[data-wa]").forEach(function(a){
+      if (url){ a.href = url; a.target = "_blank"; a.rel = "noopener"; }
+    });
+  }
+  function setContactLine(){
+    var line = [];
+    if (digits) line.push("WhatsApp: +" + digits);
+    if (C.email) line.push("Email: " + C.email);
+    var cl = document.getElementById("contactLine");
+    if (cl) { if (line.length) cl.textContent = line.join("  ·  "); else cl.classList.add("hide"); }
+  }
+
+  /* ===== Bahasa / Language ===== */
+  var KEY = "hartanto-lang";
+  function pickLang(){
+    var q = (location.search.match(/[?&]lang=(id|en)\b/) || [])[1]; if (q) return q;
+    var h = (location.hash.match(/^#(id|en)$/) || [])[1]; if (h) return h;
+    try { var s = localStorage.getItem(KEY); if (s === "id" || s === "en") return s; } catch(e){}
+    return /^(id|ms)/i.test(navigator.language || "id") ? "id" : "en";
+  }
+  function applyLang(l){
+    LANG = l;
+    document.documentElement.lang = l;
+    document.querySelectorAll("[data-en]").forEach(function(el){
+      if (!el.hasAttribute("data-id")) el.setAttribute("data-id", el.innerHTML);
+      el.innerHTML = l === "en" ? el.getAttribute("data-en") : el.getAttribute("data-id");
+    });
+    document.title = TITLES[l];
+    document.querySelectorAll(".lang button").forEach(function(b){
+      var on = b.getAttribute("data-lang") === l;
+      b.classList.toggle("on", on); b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    try { localStorage.setItem(KEY, l); } catch(e){}
+    setWa();
+  }
+  document.querySelectorAll(".lang button").forEach(function(b){
+    b.addEventListener("click", function(){ applyLang(b.getAttribute("data-lang")); });
+  });
+  applyLang(pickLang());
+  setContactLine();
+
+  var th = document.querySelector("[data-threads]");
+  if (th){
+    var u = (C.threads || "").replace(/^@/, "");
+    if (u) th.href = "https://www.threads.net/@" + u; else th.classList.add("hide");
+  }
+  [["[data-github]", C.github, "https://github.com/"], ["[data-linkedin]", C.linkedin, "https://www.linkedin.com/in/"]].forEach(function(x){
+    var el = document.querySelector(x[0]); if (!el) return;
+    if (x[1]) el.href = x[2] + x[1]; else el.classList.add("hide");
+  });
+
+  document.querySelectorAll("[data-link]").forEach(function(a){
+    var url = links[a.getAttribute("data-link")];
+    if (url && !/^https?:\/\//i.test(url)) url = "https://" + url;
+    if (url) a.href = url;
+    else { var box = a.closest(".links"); (box || a).classList.add("hide"); }
+  });
+
+  document.querySelectorAll(".gallery img").forEach(function(img){
+    img.addEventListener("error", function(){
+      var g = img.closest(".gallery"); if (!g) return;
+      g.classList.add("hide"); var c = g.closest(".proj"); if (c) c.classList.add("noimg");
+    });
+  });
+
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  var nav = document.getElementById("nav");
+  window.addEventListener("scroll", function(){ nav.classList.toggle("scrolled", window.scrollY > 8); }, {passive:true});
+
+  if ("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, {threshold:.12});
+    document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); });
+  }
+})();
+</script>
+</body>
+</html>
